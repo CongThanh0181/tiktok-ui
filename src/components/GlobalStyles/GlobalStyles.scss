@@ -1,10 +1,18 @@
 //reset css with library normalize
 @import 'normalize.css';
+
 //font family
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
     --primary-color: #ff3b5d;
+    --black: black;
+    --white: white;
+    --text-color: #333;
+
+    // DefaultLayout
+    --default-layout-header-height: 60px;
+    --width-content: 1150px;
 }
 
 * {
@@ -22,4 +30,17 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    color: var(--text-color);
+}
+
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    text-decoration: none;
+    color: var(--text-color);
 }

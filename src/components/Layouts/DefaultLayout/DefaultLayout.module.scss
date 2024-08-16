@@ -6,7 +6,7 @@
 
 .container {
     display: flex;
-    width: 1150px;
+    width: var(--width-content);
 }
 
 .content {

@@ -1,5 +1,12 @@
 .wrapper {
-    height: 60px;
+    // variables
+    --with-btn-search: 52px;
+    --search-border-radius: 92px;
+    --height--search: 46px;
+    --top-search-spacer: 9px;
+
+    width: 100%;
+    height: var(--default-layout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
     justify-content: center;
@@ -7,5 +14,92 @@
 
 .inner {
     height: 100%;
-    width: 1150px;
+    width: var(--width-content);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+}
+
+.search,
+.search-result {
+    width: 361px;
+}
+
+.search {
+    display: flex;
+    position: relative;
+    height: var(--height--search);
+    padding-left: 16px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    border: 1.5px solid transparent;
+
+    input {
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        background-color: transparent;
+        caret-color: var(--primary-color);
+
+        &:not(:placeholder-shown) ~ .search-btn {
+            color: rgba(22, 24, 35, 0.75);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: calc(var(--height--search) - var(--top-search-spacer) * 2);
+        width: 2px;
+        background-color: rgba(22, 24, 35, 0.12);
+        top: var(--top-search-spacer);
+        right: var(--with-btn-search);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+.search-result {
+    .search-title {
+        padding: 5px 12px;
+        color: rgba(22, 24, 35, 0.5);
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+}
+
+.clear-btn,
+.loading {
+    position: absolute;
+    right: calc(var(--with-btn-search) + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    width: var(--with-btn-search);
+    height: 100%;
+    border-radius: 0 var(--search-border-radius) var(--search-border-radius) 0;
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+
+.custom-class-text {
+    color: green;
 }
