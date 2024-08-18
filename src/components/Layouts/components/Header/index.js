@@ -2,12 +2,22 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleQuestion,
+    faCircleXmark,
+    faEarthAsia,
+    faEllipsisVertical,
+    faKeyboard,
+    faMagnifyingGlass,
+    // faSignIn,
+    faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 // import 'tippy.js/dist/tippy.css';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 // Assets
 import styles from './Header.module.scss';
@@ -16,6 +26,52 @@ import AccountItem from '~/components/AccountItem';
 
 //Use library to make classnames css
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                    children: {
+                        title: 'Language',
+                        data: [
+                            {
+                                type: 'language',
+                                code: 'en-us',
+                                title: 'English-US',
+                            },
+                            {
+                                type: 'language',
+                                code: 'en-uk',
+                                title: 'English-UK',
+                            },
+                        ],
+                    },
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/following',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
@@ -78,6 +134,12 @@ function Header() {
                             Log in
                         </Button>
                     */}
+
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('menu-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
